@@ -21,7 +21,9 @@
     "url": "https://github.com/Godwin9911/netlify-express"
   },
   "homepage": "https://github.com/Godwin9911/netlify-express",
-  "dependencies": {},
+  "dependencies": {
+    "google-spreadsheet": "^2.0.7"
+  },
   "devDependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",

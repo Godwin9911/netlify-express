@@ -3,10 +3,18 @@ const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
+const GoogleSpreadsheet = require('google-spreadsheet');
+const creds = require('./client_secret.json');
+
+const doc = new GoogleSpreadsheet('173LyYOUWwjgTDx3f7ySteFBXiBOhYgST57JCZDOCLSo');
 
 const router = express.Router();
 router.get('/', (req, res) => {
-  res.json({message: "hello from Json"})
+  doc.useServiceAccountAuth(creds, function (err) {
+    doc.getRows(1, function (err, rows) {
+      res.json(rows);
+    });
+  });
 });
 
 
