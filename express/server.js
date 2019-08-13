@@ -10,7 +10,7 @@ const creds = require('./client_secret.json');
 const doc = new GoogleSpreadsheet('173LyYOUWwjgTDx3f7ySteFBXiBOhYgST57JCZDOCLSo');
 
 const router = express.Router();
-router.get('/', (req, res) => {
+router.get('/', cors(), (req, res) => {
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getRows(1, function (err, rows) {
       res.json(rows);
